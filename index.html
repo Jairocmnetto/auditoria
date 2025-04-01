@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Auditoria Interna - PCP (Calçados)</title>
+  <style>
+    /* Estilos melhorados */
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f8f9fa;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .section-header {
+      background: #2c3e50;
+      color: #fff;
+      padding: 1rem;
+      margin: 2rem 0 1rem;
+      border-radius: 5px;
+      font-size: 1.1rem;
+    }
+
+    .question-section {
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      border: 1px solid #dee2e6;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+
+    .question-section.incomplete {
+      border-color: #dc3545;
+      background: #fff5f5;
+    }
+
+    .question-title {
+      color: #2c3e50;
+      margin: 0 0 1rem;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .options {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .options label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+
+    .evidence {
+      display: none;
+      margin-top: 1rem;
+    }
+
+    .evidence textarea {
+      width: 100%;
+      min-height: 100px;
+      padding: 0.8rem;
+      border: 1px solid #ced4da;
+      border-radius: 4px;
+      font-family: inherit;
+    }
+
+    .saved-info {
+      margin-top: 1rem;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .save-button {
+      background: #28a745;
+      color: white;
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .save-button:hover {
+      background: #218838;
+    }
+
+    .view-btn {
+      background: #17a2b8;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .toggle-evidence-btn {
+      background: #007bff;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-bottom: 1rem;
+    }
+
+    .toggle-evidence-btn:hover {
+      background: #0069d9;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      max-width: 600px;
+      width: 90%;
+      position: relative;
+      z-index: 1001;
+    }
+
+    .close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Auditoria Interna - PCP (Calçados)</h1>
+  </header>
+
+  <main>
+    <!-- Seção única com todas as perguntas -->
+    <div class="section-header">Seção 1 - Planejamento</div>
+
+    <!-- Pergunta 1.1 -->
+    <div class="question-section" id="q1_1" data-pergunta="1.1">
+      <div class="question-title">
+        1.1 - Há confirmação ou sugestão de alteração justificada pelas unidades locais quanto à definição das semanas
+        programadas?
+      </div>
+      <div class="options">
+        <label>
+          <input type="radio" name="q1_1_option" value="Conforme" required>
+          Conforme
+        </label>
+        <label>
+          <input type="radio" name="q1_1_option" value="Não Conforme" required>
+          Não Conforme
+        </label>
+      </div>
+      <!-- Botão para alternar a exibição do campo de evidência -->
+      <button type="button" class="toggle-evidence-btn" onclick="toggleEvidence(this)">Inserir Evidência</button>
+      <div class="evidence">
+        <label for="q1_1_evidence">Evidência:</label>
+        <textarea id="q1_1_evidence" required></textarea>
+      </div>
+      <div class="saved-info"></div>
+    </div>
+
+    <!-- Pergunta 1.2 -->
+    <div class="question-section" id="q1_2" data-pergunta="1.2">
+      <div class="question-title">
+        1.2 - Na programação, foram respeitadas as metas estabelecidas pelo masterplan vigente?
+      </div>
+      <div class="options">
+        <label>
+          <input type="radio" name="q1_2_option" value="Conforme" required>
+          Conforme
+        </label>
+        <label>
+          <input type="radio" name="q1_2_option" value="Não Conforme" required>
+          Não Conforme
+        </label>
+      </div>
+      <button type="button" class="toggle-evidence-btn" onclick="toggleEvidence(this)">Inserir Evidência</button>
+      <div class="evidence">
+        <label for="q1_2_evidence">Evidência:</label>
+        <textarea id="q1_2_evidence" required></textarea>
+      </div>
+      <div class="saved-info"></div>
+    </div>
+
+    <!-- Seção única com todas as perguntas -->
+    <div class="section-header">Seção 2 - PCP: Reprogramação</div>
+
+
+    <!-- Pergunta 2.1 -->
+    <div class="question-section" id="q2_1" data-pergunta="2.1">
+      <div class="question-title">
+        2.1 - Os PCP’s envolvidos deram retorno (validação ou novo ajuste) dentro do prazo de 24h?
+      </div>
+      <div class="options">
+        <label>
+          <input type="radio" name="q2_1_option" value="Conforme" required>
+          Conforme
+        </label>
+        <label>
+          <input type="radio" name="q2_1_option" value="Não Conforme" required>
+          Não Conforme
+        </label>
+      </div>
+      <button type="button" class="toggle-evidence-btn" onclick="toggleEvidence(this)">Inserir Evidência</button>
+      <div class="evidence">
+        <label for="q2_1_evidence">Evidência:</label>
+        <textarea id="q2_1_evidence" required></textarea>
+      </div>
+      <div class="saved-info"></div>
+    </div>
+
+    <!-- Pergunta 2.2 -->
+    <div class="question-section" id="q2_2" data-pergunta="2.2">
+      <div class="question-title">
+        2.2 - O consenso sobre a reprogramação foi obtido mediante registro por e-mail?
+      </div>
+      <div class="options">
+        <label>
+          <input type="radio" name="q2_2_option" value="Conforme" required>
+          Conforme
+        </label>
+        <label>
+          <input type="radio" name="q2_2_option" value="Não Conforme" required>
+          Não Conforme
+        </label>
+      </div>
+      <button type="button" class="toggle-evidence-btn" onclick="toggleEvidence(this)">Inserir Evidência</button>
+      <div class="evidence">
+        <label for="q2_2_evidence">Evidência:</label>
+        <textarea id="q2_2_evidence" required></textarea>
+      </div>
+      <div class="saved-info"></div>
+    </div>
+
+    <!-- Seção única com todas as perguntas -->
+    <div class="section-header">Seção 3 - PCP: Procedimentos de Reposição</div>
+
+    <!-- Pergunta 3.1 -->
+    <div class="question-section" id="q3_1" data-pergunta="3.1">
+      <div class="question-title">
+        3.1 - Os pares com boa qualidade foram separados em caixas forradas de amarelo e em um local específico?
+      </div>
+      <div class="options">
+        <label>
+          <input type="radio" name="q3_1_option" value="Conforme" required>
+          Conforme
+        </label>
+        <label>
+          <input type="radio" name="q3_1_option" value="Não Conforme" required>
+          Não Conforme
+        </label>
+      </div>
+      <button type="button" class="toggle-evidence-btn" onclick="toggleEvidence(this)">Inserir Evidência</button>
+      <div class="evidence">
+        <label for="q3_1_evidence">Evidência:</label>
+        <textarea id="q3_1_evidence" required></textarea>
+      </div>
+      <div class="saved-info"></div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Botão para salvar as respostas do formulário -->
+    <div style="margin-top: 2rem;">
+      <button class="save-button" onclick="salvarRespostas()">Salvar Auditoria</button>
+    </div>
+  </main>
+
+  <!-- Modal para exibir a evidência -->
+  <div id="evidenceModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="fecharModal()">&times;</span>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <script>
+    // Função para alternar a exibição do campo de evidência
+    function toggleEvidence(button) {
+      const section = button.closest('.question-section');
+      const evidenceDiv = section.querySelector('.evidence');
+      if (evidenceDiv.style.display === "flex") {
+        evidenceDiv.style.display = "none";
+        button.textContent = "Inserir Evidência";
+      } else {
+        evidenceDiv.style.display = "flex";
+        button.textContent = "Ocultar Evidência";
+      }
+    }
+
+    // Função para salvar as respostas (POST)
+    function salvarRespostas() {
+      const respostas = {};
+      document.querySelectorAll('.question-section').forEach(section => {
+        const pergunta = section.getAttribute('data-pergunta');
+        // Só envia se não estiver já salva
+        if (section.getAttribute('data-saved') === 'true') return;
+        const option = section.querySelector('input[type="radio"]:checked');
+        const evidence = section.querySelector('.evidence textarea').value.trim();
+        if (!option || !evidence) {
+          // Pode alertar ou ignorar; aqui optamos por alertar e interromper
+          alert("Preencha todos os campos obrigatórios para a pergunta " + pergunta);
+          throw new Error("Campos obrigatórios ausentes na pergunta " + pergunta);
+        }
+        respostas[pergunta] = { status: option.value, evidencia: evidence };
+      });
+
+      fetch("http://localhost:4000/auditoria", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ respostas })
+      })
+        .then(resp => resp.json())
+        .then(data => {
+          if (data.error) {
+            alert("Erro: " + data.error);
+          } else {
+            alert("Respostas salvas com sucesso!");
+            buscarRespostas(); // Atualiza o formulário com as respostas salvas
+          }
+        })
+        .catch(err => {
+          console.error("Erro ao enviar dados:", err);
+          alert("Erro ao enviar os dados para o servidor.");
+        });
+    }
+
+    // Função para buscar as respostas salvas (GET)
+    function buscarRespostas() {
+      fetch("http://localhost:4000/auditoria")
+        .then(resp => resp.json())
+        .then(data => {
+          atualizarFormulario(data);
+        })
+        .catch(err => {
+          console.error("Erro ao buscar respostas:", err);
+        });
+    }
+
+    // Atualiza o formulário: se uma pergunta já tiver resposta salva, preenche, bloqueia e adiciona botão "Ver Evidência"
+    function atualizarFormulario(respostas) {
+      respostas.forEach(item => {
+        // Espera que o item.pergunta_id esteja no mesmo formato que o data-pergunta (ex.: "1.1")
+        const qId = "q" + item.pergunta_id.replace(".", "_");
+        const section = document.getElementById(qId);
+        if (section) {
+          // Define os radio buttons de acordo com a resposta salva
+          const radios = section.querySelectorAll('input[type="radio"]');
+          radios.forEach(radio => {
+            if (radio.value === (item.resposta ? "Conforme" : "Não Conforme")) {
+              radio.checked = true;
+            }
+            radio.disabled = true;
+          });
+          // Preenche e desabilita o campo de evidência
+          const evidenceField = section.querySelector('.evidence textarea');
+          evidenceField.value = item.evidencia;
+          evidenceField.disabled = true;
+          // Garante que o campo de evidência continue oculto
+          section.querySelector('.evidence').style.display = 'none';
+          // Marca a seção como já salva
+          section.setAttribute('data-saved', 'true');
+          // Remove o botão de inserir evidência, se existir
+          const toggleBtn = section.querySelector('.toggle-evidence-btn');
+          if (toggleBtn) toggleBtn.remove();
+          // Adiciona o botão "Ver Evidência" na área .saved-info
+          const savedInfoDiv = section.querySelector('.saved-info');
+          savedInfoDiv.innerHTML = `<button class="view-btn" onclick="mostrarEvidencia('${item.pergunta_id}', '${item.resposta ? 'Conforme' : 'Não Conforme'}', \`${item.evidencia}\`)">Ver Evidência</button>`;
+        }
+      });
+    }
+
+    // Exibe o modal com a evidência
+    function mostrarEvidencia(perguntaId, respostaTexto, evidencia) {
+      const modal = document.getElementById("evidenceModal");
+      const modalContent = document.getElementById("modalContent");
+      modalContent.innerHTML = `
+        <p><strong>Pergunta ${perguntaId}</strong></p>
+        <p><strong>Resposta:</strong> ${respostaTexto}</p>
+        <p><strong>Evidência:</strong> ${evidencia}</p>
+      `;
+      modal.style.display = "flex";
+    }
+
+    // Fecha o modal
+    function fecharModal() {
+      document.getElementById("evidenceModal").style.display = "none";
+    }
+
+    // Busca as respostas salvas ao carregar a página
+    window.onload = function () {
+      buscarRespostas();
+    }
+  </script>
+
+</body>
+
+</html>
