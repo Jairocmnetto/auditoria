@@ -109,20 +109,6 @@
       cursor: pointer;
     }
 
-    .toggle-evidence-btn {
-      background: #007bff;
-      color: white;
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      margin-bottom: 1rem;
-    }
-
-    .toggle-evidence-btn:hover {
-      background: #0069d9;
-    }
-
     .modal {
       display: none;
       position: fixed;
@@ -163,7 +149,7 @@
   </header>
 
   <main>
-    <!-- Seção única com todas as perguntas -->
+    <!-- Seção 1 - Planejamento -->
     <div class="section-header">Seção 1 - Planejamento</div>
 
     <!-- Pergunta 1.1 -->
@@ -174,19 +160,17 @@
       </div>
       <div class="options">
         <label>
-          <input type="radio" name="q1_1_option" value="Conforme" required>
+          <input type="radio" name="q1_1_option" value="Conforme">
           Conforme
         </label>
         <label>
-          <input type="radio" name="q1_1_option" value="Não Conforme" required>
+          <input type="radio" name="q1_1_option" value="Não Conforme">
           Não Conforme
         </label>
       </div>
-      <!-- Botão para alternar a exibição do campo de evidência -->
-      <button type="button" class="toggle-evidence-btn" onclick="toggleEvidence(this)">Inserir Evidência</button>
       <div class="evidence">
         <label for="q1_1_evidence">Evidência:</label>
-        <textarea id="q1_1_evidence" required></textarea>
+        <textarea id="q1_1_evidence"></textarea>
       </div>
       <div class="saved-info"></div>
     </div>
@@ -198,25 +182,23 @@
       </div>
       <div class="options">
         <label>
-          <input type="radio" name="q1_2_option" value="Conforme" required>
+          <input type="radio" name="q1_2_option" value="Conforme">
           Conforme
         </label>
         <label>
-          <input type="radio" name="q1_2_option" value="Não Conforme" required>
+          <input type="radio" name="q1_2_option" value="Não Conforme">
           Não Conforme
         </label>
       </div>
-      <button type="button" class="toggle-evidence-btn" onclick="toggleEvidence(this)">Inserir Evidência</button>
       <div class="evidence">
         <label for="q1_2_evidence">Evidência:</label>
-        <textarea id="q1_2_evidence" required></textarea>
+        <textarea id="q1_2_evidence"></textarea>
       </div>
       <div class="saved-info"></div>
     </div>
 
-    <!-- Seção única com todas as perguntas -->
+    <!-- Seção 2 - PCP: Reprogramação -->
     <div class="section-header">Seção 2 - PCP: Reprogramação</div>
-
 
     <!-- Pergunta 2.1 -->
     <div class="question-section" id="q2_1" data-pergunta="2.1">
@@ -225,18 +207,17 @@
       </div>
       <div class="options">
         <label>
-          <input type="radio" name="q2_1_option" value="Conforme" required>
+          <input type="radio" name="q2_1_option" value="Conforme">
           Conforme
         </label>
         <label>
-          <input type="radio" name="q2_1_option" value="Não Conforme" required>
+          <input type="radio" name="q2_1_option" value="Não Conforme">
           Não Conforme
         </label>
       </div>
-      <button type="button" class="toggle-evidence-btn" onclick="toggleEvidence(this)">Inserir Evidência</button>
       <div class="evidence">
         <label for="q2_1_evidence">Evidência:</label>
-        <textarea id="q2_1_evidence" required></textarea>
+        <textarea id="q2_1_evidence"></textarea>
       </div>
       <div class="saved-info"></div>
     </div>
@@ -248,23 +229,22 @@
       </div>
       <div class="options">
         <label>
-          <input type="radio" name="q2_2_option" value="Conforme" required>
+          <input type="radio" name="q2_2_option" value="Conforme">
           Conforme
         </label>
         <label>
-          <input type="radio" name="q2_2_option" value="Não Conforme" required>
+          <input type="radio" name="q2_2_option" value="Não Conforme">
           Não Conforme
         </label>
       </div>
-      <button type="button" class="toggle-evidence-btn" onclick="toggleEvidence(this)">Inserir Evidência</button>
       <div class="evidence">
         <label for="q2_2_evidence">Evidência:</label>
-        <textarea id="q2_2_evidence" required></textarea>
+        <textarea id="q2_2_evidence"></textarea>
       </div>
       <div class="saved-info"></div>
     </div>
 
-    <!-- Seção única com todas as perguntas -->
+    <!-- Seção 3 - PCP: Procedimentos de Reposição -->
     <div class="section-header">Seção 3 - PCP: Procedimentos de Reposição</div>
 
     <!-- Pergunta 3.1 -->
@@ -274,38 +254,136 @@
       </div>
       <div class="options">
         <label>
-          <input type="radio" name="q3_1_option" value="Conforme" required>
+          <input type="radio" name="q3_1_option" value="Conforme">
           Conforme
         </label>
         <label>
-          <input type="radio" name="q3_1_option" value="Não Conforme" required>
+          <input type="radio" name="q3_1_option" value="Não Conforme">
           Não Conforme
         </label>
       </div>
-      <button type="button" class="toggle-evidence-btn" onclick="toggleEvidence(this)">Inserir Evidência</button>
       <div class="evidence">
         <label for="q3_1_evidence">Evidência:</label>
-        <textarea id="q3_1_evidence" required></textarea>
+        <textarea id="q3_1_evidence"></textarea>
       </div>
       <div class="saved-info"></div>
     </div>
 
+    <!-- Pergunta 3.2 -->
+    <div class="question-section" id="q3_2" data-pergunta="3.2">
+      <div class="question-title">
+        3.2 - O FORMPCP002 foi devidamente preenchido/assinado pelo coordenador da célula de produção que deu origem à
+        reposição de peças/pares?
+      </div>
+      <div class="options">
+        <label>
+          <input type="radio" name="q3_2_option" value="Conforme">
+          Conforme
+        </label>
+        <label>
+          <input type="radio" name="q3_2_option" value="Não Conforme">
+          Não Conforme
+        </label>
+      </div>
+      <div class="evidence">
+        <label for="q3_2_evidence">Evidência:</label>
+        <textarea id="q3_2_evidence"></textarea>
+      </div>
+      <div class="saved-info"></div>
+    </div>
 
+    <!-- Pergunta 3.3 -->
+    <div class="question-section" id="q3_3" data-pergunta="3.3">
+      <div class="question-title">
+        3.3 - As reposições geradas no setor de dublagem ou enfesto foram solicitadas em m² com as informações de:
+        Célula de produção, setor, turno de produção, marca do modelo, motivo da reposição, ordem de produção, data da
+        solicitação, data de embarque, chapa do solicitante, quantidade de peças/ m²?
+      </div>
+      <div class="options">
+        <label>
+          <input type="radio" name="q3_3_option" value="Conforme">
+          Conforme
+        </label>
+        <label>
+          <input type="radio" name="q3_3_option" value="Não Conforme">
+          Não Conforme
+        </label>
+      </div>
+      <div class="evidence">
+        <label for="q3_3_evidence">Evidência:</label>
+        <textarea id="q3_3_evidence"></textarea>
+      </div>
+      <div class="saved-info"></div>
+    </div>
 
+    <!-- Pergunta 3.4 -->
+    <div class="question-section" id="q3_4" data-pergunta="3.4">
+      <div class="question-title">
+        3.4 - As peças com defeito foram colocadas em caixas vermelhas e em um local específico até que a equipe de
+        qualidade faça a inspeção?
+      </div>
+      <div class="options">
+        <label>
+          <input type="radio" name="q3_4_option" value="Conforme">
+          Conforme
+        </label>
+        <label>
+          <input type="radio" name="q3_4_option" value="Não Conforme">
+          Não Conforme
+        </label>
+      </div>
+      <div class="evidence">
+        <label for="q3_4_evidence">Evidência:</label>
+        <textarea id="q3_4_evidence"></textarea>
+      </div>
+      <div class="saved-info"></div>
+    </div>
 
+    <!-- Pergunta 3.5 -->
+    <div class="question-section" id="q3_5" data-pergunta="3.5">
+      <div class="question-title">
+        O setor de qualidade inspecionou as peças com defeito e liberou para envio ao PCP com os ajustes (se necessário)
+        e mediante assinatura no formulário?
+      </div>
+      <div class="options">
+        <label>
+          <input type="radio" name="q3_5_option" value="Conforme">
+          Conforme
+        </label>
+        <label>
+          <input type="radio" name="q3_5_option" value="Não Conforme">
+          Não Conforme
+        </label>
+      </div>
+      <div class="evidence">
+        <label for="q3_5_evidence">Evidência:</label>
+        <textarea id="q3_5_evidence"></textarea>
+      </div>
+      <div class="saved-info"></div>
+    </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
+    <!-- Pergunta 3.6 -->
+    <div class="question-section" id="q3_6" data-pergunta="3.6">
+      <div class="question-title">
+        O PCP direcionou as peças para o local de avaliação junto aos gestores de cada área? Foi realizado plano de ação
+        para conscientização e tratativas dos defeitos das peças?
+      </div>
+      <div class="options">
+        <label>
+          <input type="radio" name="q3_6_option" value="Conforme">
+          Conforme
+        </label>
+        <label>
+          <input type="radio" name="q3_6_option" value="Não Conforme">
+          Não Conforme
+        </label>
+      </div>
+      <div class="evidence">
+        <label for="q3_6_evidence">Evidência:</label>
+        <textarea id="q3_6_evidence"></textarea>
+      </div>
+      <div class="saved-info"></div>
+    </div>
 
     <!-- Botão para salvar as respostas do formulário -->
     <div style="margin-top: 2rem;">
@@ -322,35 +400,33 @@
   </div>
 
   <script>
-    // Função para alternar a exibição do campo de evidência
-    function toggleEvidence(button) {
-      const section = button.closest('.question-section');
-      const evidenceDiv = section.querySelector('.evidence');
-      if (evidenceDiv.style.display === "flex") {
-        evidenceDiv.style.display = "none";
-        button.textContent = "Inserir Evidência";
-      } else {
-        evidenceDiv.style.display = "flex";
-        button.textContent = "Ocultar Evidência";
-      }
-    }
+    // Ao selecionar uma opção, exibe automaticamente o campo de evidência
+    document.querySelectorAll('.options input[type="radio"]').forEach(input => {
+      input.addEventListener('change', (e) => {
+        const section = e.target.closest('.question-section');
+        if (section.getAttribute('data-saved') === 'true') return;
+        section.querySelector('.evidence').style.display = 'flex';
+      });
+    });
 
-    // Função para salvar as respostas (POST)
+    // Função para salvar as respostas (POST) sem exigir que todas as perguntas estejam preenchidas
     function salvarRespostas() {
       const respostas = {};
       document.querySelectorAll('.question-section').forEach(section => {
-        const pergunta = section.getAttribute('data-pergunta');
-        // Só envia se não estiver já salva
+        // Ignora perguntas já salvas
         if (section.getAttribute('data-saved') === 'true') return;
+        const pergunta = section.getAttribute('data-pergunta');
         const option = section.querySelector('input[type="radio"]:checked');
-        const evidence = section.querySelector('.evidence textarea').value.trim();
-        if (!option || !evidence) {
-          // Pode alertar ou ignorar; aqui optamos por alertar e interromper
-          alert("Preencha todos os campos obrigatórios para a pergunta " + pergunta);
-          throw new Error("Campos obrigatórios ausentes na pergunta " + pergunta);
+        if (option) {
+          const evidence = section.querySelector('.evidence textarea').value.trim();
+          respostas[pergunta] = { status: option.value, evidencia: evidence };
         }
-        respostas[pergunta] = { status: option.value, evidencia: evidence };
       });
+
+      if (Object.keys(respostas).length === 0) {
+        alert("Nenhuma resposta preenchida.");
+        return;
+      }
 
       fetch("http://localhost:4000/auditoria", {
         method: "POST",
@@ -384,7 +460,7 @@
         });
     }
 
-    // Atualiza o formulário: se uma pergunta já tiver resposta salva, preenche, bloqueia e adiciona botão "Ver Evidência"
+    // Atualiza o formulário: se uma pergunta já tiver resposta salva, preenche, bloqueia e adiciona o botão "Ver Evidência"
     function atualizarFormulario(respostas) {
       respostas.forEach(item => {
         // Espera que o item.pergunta_id esteja no mesmo formato que o data-pergunta (ex.: "1.1")
@@ -407,9 +483,6 @@
           section.querySelector('.evidence').style.display = 'none';
           // Marca a seção como já salva
           section.setAttribute('data-saved', 'true');
-          // Remove o botão de inserir evidência, se existir
-          const toggleBtn = section.querySelector('.toggle-evidence-btn');
-          if (toggleBtn) toggleBtn.remove();
           // Adiciona o botão "Ver Evidência" na área .saved-info
           const savedInfoDiv = section.querySelector('.saved-info');
           savedInfoDiv.innerHTML = `<button class="view-btn" onclick="mostrarEvidencia('${item.pergunta_id}', '${item.resposta ? 'Conforme' : 'Não Conforme'}', \`${item.evidencia}\`)">Ver Evidência</button>`;
