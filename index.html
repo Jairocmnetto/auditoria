@@ -57,10 +57,8 @@
       display: flex;
       gap: 1rem;
       align-items: center;
-    }
+   }
     .save-button {
-      position:fixed;
-      right:20px;
       background: #28a745;
       color: white;
       padding: 0.8rem 2rem;
@@ -69,6 +67,10 @@
       border-radius: 5px;
       cursor: pointer;
       transition: background 0.3s ease;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1100;
     }
     .save-button:hover {
       background: #218838;
