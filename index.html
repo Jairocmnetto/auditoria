@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
   <meta charset="UTF-8">
   <title>Auditoria Interna - PCP (Calçados)</title>
   <style>
-    /* Estilos melhorados */
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
       margin: 0;
       padding: 20px;
       background: #f8f9fa;
     }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      background: #fff;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #464343;
+      color: white;
+      padding: 1rem;
+      z-index: 1000;
     }
-
+    main {
+      padding-top: 80px;
+    }
     .section-header {
       background: #2c3e50;
       color: #fff;
@@ -30,61 +31,33 @@
       border-radius: 5px;
       font-size: 1.1rem;
     }
-
     .question-section {
       margin-bottom: 1.5rem;
       padding: 1rem;
       border: 1px solid #dee2e6;
       border-radius: 5px;
-      transition: all 0.3s ease;
     }
-
-    .question-section.incomplete {
-      border-color: #dc3545;
-      background: #fff5f5;
-    }
-
     .question-title {
       color: #2c3e50;
       margin: 0 0 1rem;
       font-size: 1rem;
       font-weight: 600;
     }
-
     .options {
       display: flex;
       gap: 1.5rem;
       margin-bottom: 1rem;
     }
-
-    .options label {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      cursor: pointer;
-    }
-
     .evidence {
       display: none;
       margin-top: 1rem;
     }
-
-    .evidence textarea {
-      width: 100%;
-      min-height: 100px;
-      padding: 0.8rem;
-      border: 1px solid #ced4da;
-      border-radius: 4px;
-      font-family: inherit;
-    }
-
     .saved-info {
       margin-top: 1rem;
       display: flex;
       gap: 1rem;
       align-items: center;
     }
-
     .save-button {
       background: #28a745;
       color: white;
@@ -95,11 +68,9 @@
       cursor: pointer;
       transition: background 0.3s ease;
     }
-
     .save-button:hover {
       background: #218838;
     }
-
     .view-btn {
       background: #17a2b8;
       color: white;
@@ -108,7 +79,6 @@
       border-radius: 4px;
       cursor: pointer;
     }
-
     .modal {
       display: none;
       position: fixed;
@@ -121,7 +91,6 @@
       align-items: center;
       z-index: 1000;
     }
-
     .modal-content {
       background: white;
       padding: 2rem;
@@ -131,7 +100,6 @@
       position: relative;
       z-index: 1001;
     }
-
     .close {
       position: absolute;
       top: 1rem;
@@ -141,251 +109,12 @@
     }
   </style>
 </head>
-
 <body>
-
   <header>
     <h1>Auditoria Interna - PCP (Calçados)</h1>
   </header>
-
   <main>
-    <!-- Seção 1 - Planejamento -->
-    <div class="section-header">Seção 1 - Planejamento</div>
-
-    <!-- Pergunta 1.1 -->
-    <div class="question-section" id="q1_1" data-pergunta="1.1">
-      <div class="question-title">
-        1.1 - Há confirmação ou sugestão de alteração justificada pelas unidades locais quanto à definição das semanas
-        programadas?
-      </div>
-      <div class="options">
-        <label>
-          <input type="radio" name="q1_1_option" value="Conforme">
-          Conforme
-        </label>
-        <label>
-          <input type="radio" name="q1_1_option" value="Não Conforme">
-          Não Conforme
-        </label>
-      </div>
-      <div class="evidence">
-        <label for="q1_1_evidence">Evidência:</label>
-        <textarea id="q1_1_evidence"></textarea>
-      </div>
-      <div class="saved-info"></div>
-    </div>
-
-    <!-- Pergunta 1.2 -->
-    <div class="question-section" id="q1_2" data-pergunta="1.2">
-      <div class="question-title">
-        1.2 - Na programação, foram respeitadas as metas estabelecidas pelo masterplan vigente?
-      </div>
-      <div class="options">
-        <label>
-          <input type="radio" name="q1_2_option" value="Conforme">
-          Conforme
-        </label>
-        <label>
-          <input type="radio" name="q1_2_option" value="Não Conforme">
-          Não Conforme
-        </label>
-      </div>
-      <div class="evidence">
-        <label for="q1_2_evidence">Evidência:</label>
-        <textarea id="q1_2_evidence"></textarea>
-      </div>
-      <div class="saved-info"></div>
-    </div>
-
-    <!-- Seção 2 - PCP: Reprogramação -->
-    <div class="section-header">Seção 2 - PCP: Reprogramação</div>
-
-    <!-- Pergunta 2.1 -->
-    <div class="question-section" id="q2_1" data-pergunta="2.1">
-      <div class="question-title">
-        2.1 - Os PCP’s envolvidos deram retorno (validação ou novo ajuste) dentro do prazo de 24h?
-      </div>
-      <div class="options">
-        <label>
-          <input type="radio" name="q2_1_option" value="Conforme">
-          Conforme
-        </label>
-        <label>
-          <input type="radio" name="q2_1_option" value="Não Conforme">
-          Não Conforme
-        </label>
-      </div>
-      <div class="evidence">
-        <label for="q2_1_evidence">Evidência:</label>
-        <textarea id="q2_1_evidence"></textarea>
-      </div>
-      <div class="saved-info"></div>
-    </div>
-
-    <!-- Pergunta 2.2 -->
-    <div class="question-section" id="q2_2" data-pergunta="2.2">
-      <div class="question-title">
-        2.2 - O consenso sobre a reprogramação foi obtido mediante registro por e-mail?
-      </div>
-      <div class="options">
-        <label>
-          <input type="radio" name="q2_2_option" value="Conforme">
-          Conforme
-        </label>
-        <label>
-          <input type="radio" name="q2_2_option" value="Não Conforme">
-          Não Conforme
-        </label>
-      </div>
-      <div class="evidence">
-        <label for="q2_2_evidence">Evidência:</label>
-        <textarea id="q2_2_evidence"></textarea>
-      </div>
-      <div class="saved-info"></div>
-    </div>
-
-    <!-- Seção 3 - PCP: Procedimentos de Reposição -->
-    <div class="section-header">Seção 3 - PCP: Procedimentos de Reposição</div>
-
-    <!-- Pergunta 3.1 -->
-    <div class="question-section" id="q3_1" data-pergunta="3.1">
-      <div class="question-title">
-        3.1 - Os pares com boa qualidade foram separados em caixas forradas de amarelo e em um local específico?
-      </div>
-      <div class="options">
-        <label>
-          <input type="radio" name="q3_1_option" value="Conforme">
-          Conforme
-        </label>
-        <label>
-          <input type="radio" name="q3_1_option" value="Não Conforme">
-          Não Conforme
-        </label>
-      </div>
-      <div class="evidence">
-        <label for="q3_1_evidence">Evidência:</label>
-        <textarea id="q3_1_evidence"></textarea>
-      </div>
-      <div class="saved-info"></div>
-    </div>
-
-    <!-- Pergunta 3.2 -->
-    <div class="question-section" id="q3_2" data-pergunta="3.2">
-      <div class="question-title">
-        3.2 - O FORMPCP002 foi devidamente preenchido/assinado pelo coordenador da célula de produção que deu origem à
-        reposição de peças/pares?
-      </div>
-      <div class="options">
-        <label>
-          <input type="radio" name="q3_2_option" value="Conforme">
-          Conforme
-        </label>
-        <label>
-          <input type="radio" name="q3_2_option" value="Não Conforme">
-          Não Conforme
-        </label>
-      </div>
-      <div class="evidence">
-        <label for="q3_2_evidence">Evidência:</label>
-        <textarea id="q3_2_evidence"></textarea>
-      </div>
-      <div class="saved-info"></div>
-    </div>
-
-    <!-- Pergunta 3.3 -->
-    <div class="question-section" id="q3_3" data-pergunta="3.3">
-      <div class="question-title">
-        3.3 - As reposições geradas no setor de dublagem ou enfesto foram solicitadas em m² com as informações de:
-        Célula de produção, setor, turno de produção, marca do modelo, motivo da reposição, ordem de produção, data da
-        solicitação, data de embarque, chapa do solicitante, quantidade de peças/ m²?
-      </div>
-      <div class="options">
-        <label>
-          <input type="radio" name="q3_3_option" value="Conforme">
-          Conforme
-        </label>
-        <label>
-          <input type="radio" name="q3_3_option" value="Não Conforme">
-          Não Conforme
-        </label>
-      </div>
-      <div class="evidence">
-        <label for="q3_3_evidence">Evidência:</label>
-        <textarea id="q3_3_evidence"></textarea>
-      </div>
-      <div class="saved-info"></div>
-    </div>
-
-    <!-- Pergunta 3.4 -->
-    <div class="question-section" id="q3_4" data-pergunta="3.4">
-      <div class="question-title">
-        3.4 - As peças com defeito foram colocadas em caixas vermelhas e em um local específico até que a equipe de
-        qualidade faça a inspeção?
-      </div>
-      <div class="options">
-        <label>
-          <input type="radio" name="q3_4_option" value="Conforme">
-          Conforme
-        </label>
-        <label>
-          <input type="radio" name="q3_4_option" value="Não Conforme">
-          Não Conforme
-        </label>
-      </div>
-      <div class="evidence">
-        <label for="q3_4_evidence">Evidência:</label>
-        <textarea id="q3_4_evidence"></textarea>
-      </div>
-      <div class="saved-info"></div>
-    </div>
-
-    <!-- Pergunta 3.5 -->
-    <div class="question-section" id="q3_5" data-pergunta="3.5">
-      <div class="question-title">
-        O setor de qualidade inspecionou as peças com defeito e liberou para envio ao PCP com os ajustes (se necessário)
-        e mediante assinatura no formulário?
-      </div>
-      <div class="options">
-        <label>
-          <input type="radio" name="q3_5_option" value="Conforme">
-          Conforme
-        </label>
-        <label>
-          <input type="radio" name="q3_5_option" value="Não Conforme">
-          Não Conforme
-        </label>
-      </div>
-      <div class="evidence">
-        <label for="q3_5_evidence">Evidência:</label>
-        <textarea id="q3_5_evidence"></textarea>
-      </div>
-      <div class="saved-info"></div>
-    </div>
-
-    <!-- Pergunta 3.6 -->
-    <div class="question-section" id="q3_6" data-pergunta="3.6">
-      <div class="question-title">
-        O PCP direcionou as peças para o local de avaliação junto aos gestores de cada área? Foi realizado plano de ação
-        para conscientização e tratativas dos defeitos das peças?
-      </div>
-      <div class="options">
-        <label>
-          <input type="radio" name="q3_6_option" value="Conforme">
-          Conforme
-        </label>
-        <label>
-          <input type="radio" name="q3_6_option" value="Não Conforme">
-          Não Conforme
-        </label>
-      </div>
-      <div class="evidence">
-        <label for="q3_6_evidence">Evidência:</label>
-        <textarea id="q3_6_evidence"></textarea>
-      </div>
-      <div class="saved-info"></div>
-    </div>
-
-    <!-- Botão para salvar as respostas do formulário -->
+    <div id="questions-container"></div>
     <div style="margin-top: 2rem;">
       <button class="save-button" onclick="salvarRespostas()">Salvar Auditoria</button>
     </div>
@@ -400,74 +129,163 @@
   </div>
 
   <script>
-    // Ao selecionar uma opção, exibe automaticamente o campo de evidência
-    document.querySelectorAll('.options input[type="radio"]').forEach(input => {
-      input.addEventListener('change', (e) => {
-        const section = e.target.closest('.question-section');
-        if (section.getAttribute('data-saved') === 'true') return;
-        section.querySelector('.evidence').style.display = 'flex';
-      });
-    });
+    // Carrega as perguntas do endpoint e monta a estrutura agrupada por categoria, ordenando as perguntas
+    async function carregarPerguntas() {
+      try {
+        const resposta = await fetch("http://localhost:4000/perguntas");
+        const perguntas = await resposta.json();
 
-    // Função para salvar as respostas (POST) sem exigir que todas as perguntas estejam preenchidas
-    function salvarRespostas() {
+        // Agrupa as perguntas por categoria
+        const perguntasPorCategoria = perguntas.reduce((acc, pergunta) => {
+          const categoria = pergunta.CATEGORIA.trim();
+          if (!acc[categoria]) {
+            acc[categoria] = [];
+          }
+          acc[categoria].push(pergunta);
+          return acc;
+        }, {});
+
+        const container = document.getElementById('questions-container');
+        container.innerHTML = '';
+
+        // Ordena as categorias e as perguntas de cada categoria (por ID)
+        const categoriasOrdenadas = Object.keys(perguntasPorCategoria).sort();
+        categoriasOrdenadas.forEach(categoria => {
+          perguntasPorCategoria[categoria].sort((a, b) => parseInt(a.ID) - parseInt(b.ID));
+
+          // Cria o header para a categoria
+          const headerCategoria = document.createElement('div');
+          headerCategoria.className = 'section-header';
+          headerCategoria.textContent = categoria;
+          container.appendChild(headerCategoria);
+
+          // Cria a seção para cada pergunta
+          perguntasPorCategoria[categoria].forEach(pergunta => {
+            const section = document.createElement('div');
+            section.className = 'question-section';
+            section.id = "q" + pergunta.ID;
+            section.setAttribute('data-pergunta', pergunta.ID);
+
+            // Título da pergunta
+            const titulo = document.createElement('div');
+            titulo.className = 'question-title';
+            titulo.textContent = pergunta.DESCRICAO;
+            section.appendChild(titulo);
+
+            // Opções: Conforme / Não Conforme
+            const opcoes = document.createElement('div');
+            opcoes.className = 'options';
+            opcoes.innerHTML = `
+              <label>
+                <input type="radio" name="q${pergunta.ID}_option" value="Conforme"> Conforme
+              </label>
+              <label>
+                <input type="radio" name="q${pergunta.ID}_option" value="Não Conforme"> Não Conforme
+              </label>
+            `;
+            section.appendChild(opcoes);
+
+            // Campo para evidência e upload de imagem
+            const divEvidencia = document.createElement('div');
+            divEvidencia.className = 'evidence';
+            divEvidencia.innerHTML = `
+              <label for="q${pergunta.ID}_evidence">Evidência:</label>
+              <textarea id="q${pergunta.ID}_evidence"></textarea>
+              <br>
+              <label for="q${pergunta.ID}_image">Imagem:</label>
+              <input type="file" id="q${pergunta.ID}_image" accept="image/*">
+            `;
+            section.appendChild(divEvidencia);
+
+            // Área para exibir informações salvas (ex.: botão "Ver Evidência")
+            const divSaved = document.createElement('div');
+            divSaved.className = 'saved-info';
+            section.appendChild(divSaved);
+
+            container.appendChild(section);
+          });
+        });
+
+        // Evento para exibir a área de evidência ao selecionar uma opção
+        document.querySelectorAll('.options input[type="radio"]').forEach(input => {
+          input.addEventListener('change', (e) => {
+            const section = e.target.closest('.question-section');
+            if (section.getAttribute('data-saved') === 'true') return;
+            section.querySelector('.evidence').style.display = 'flex';
+          });
+        });
+      } catch (error) {
+        console.error('Erro ao carregar as perguntas:', error);
+      }
+    }
+
+    // Função para salvar as respostas
+    async function salvarRespostas() {
       const respostas = {};
-      document.querySelectorAll('.question-section').forEach(section => {
-        // Ignora perguntas já salvas
-        if (section.getAttribute('data-saved') === 'true') return;
+      const sections = document.querySelectorAll('.question-section');
+      
+      for (const section of sections) {
+        if (section.getAttribute('data-saved') === 'true') continue;
         const pergunta = section.getAttribute('data-pergunta');
         const option = section.querySelector('input[type="radio"]:checked');
         if (option) {
-          const evidence = section.querySelector('.evidence textarea').value.trim();
-          respostas[pergunta] = { status: option.value, evidencia: evidence };
+          const evidencia = section.querySelector('.evidence textarea').value.trim();
+          let imagem = null;
+          const fileInput = section.querySelector('.evidence input[type="file"]');
+          if (fileInput && fileInput.files.length > 0) {
+            try {
+              imagem = await uploadImage(fileInput.files[0]);
+            } catch (error) {
+              console.error("Erro ao fazer upload da imagem:", error);
+            }
+          }
+          respostas[pergunta] = { status: option.value, evidencia, imagem };
         }
-      });
-
+      }
+      
       if (Object.keys(respostas).length === 0) {
         alert("Nenhuma resposta preenchida.");
         return;
       }
-
+      
       fetch("http://localhost:4000/auditoria", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ respostas })
       })
-        .then(resp => resp.json())
-        .then(data => {
-          if (data.error) {
-            alert("Erro: " + data.error);
-          } else {
-            alert("Respostas salvas com sucesso!");
-            buscarRespostas(); // Atualiza o formulário com as respostas salvas
-          }
-        })
-        .catch(err => {
-          console.error("Erro ao enviar dados:", err);
-          alert("Erro ao enviar os dados para o servidor.");
-        });
+      .then(resp => resp.json())
+      .then(data => {
+        if (data.error) {
+          alert("Erro: " + data.error);
+        } else {
+          alert("Respostas salvas com sucesso!");
+          buscarRespostas();
+        }
+      })
+      .catch(err => {
+        console.error("Erro ao enviar dados:", err);
+        alert("Erro ao enviar os dados para o servidor.");
+      });
     }
 
-    // Função para buscar as respostas salvas (GET)
+    // Função para buscar respostas salvas e atualizar o formulário
     function buscarRespostas() {
       fetch("http://localhost:4000/auditoria")
-        .then(resp => resp.json())
-        .then(data => {
-          atualizarFormulario(data);
-        })
-        .catch(err => {
-          console.error("Erro ao buscar respostas:", err);
-        });
+      .then(resp => resp.json())
+      .then(data => {
+        atualizarFormulario(data);
+      })
+      .catch(err => {
+        console.error("Erro ao buscar respostas:", err);
+      });
     }
 
-    // Atualiza o formulário: se uma pergunta já tiver resposta salva, preenche, bloqueia e adiciona o botão "Ver Evidência"
+    // Atualiza o formulário com as respostas salvas, incluindo o botão para ver evidência com imagem
     function atualizarFormulario(respostas) {
       respostas.forEach(item => {
-        // Espera que o item.pergunta_id esteja no mesmo formato que o data-pergunta (ex.: "1.1")
-        const qId = "q" + item.pergunta_id.replace(".", "_");
+        const qId = "q" + item.pergunta_id;
         const section = document.getElementById(qId);
         if (section) {
-          // Define os radio buttons de acordo com a resposta salva
           const radios = section.querySelectorAll('input[type="radio"]');
           radios.forEach(radio => {
             if (radio.value === (item.resposta ? "Conforme" : "Não Conforme")) {
@@ -475,29 +293,38 @@
             }
             radio.disabled = true;
           });
-          // Preenche e desabilita o campo de evidência
           const evidenceField = section.querySelector('.evidence textarea');
           evidenceField.value = item.evidencia;
           evidenceField.disabled = true;
-          // Garante que o campo de evidência continue oculto
           section.querySelector('.evidence').style.display = 'none';
-          // Marca a seção como já salva
           section.setAttribute('data-saved', 'true');
-          // Adiciona o botão "Ver Evidência" na área .saved-info
           const savedInfoDiv = section.querySelector('.saved-info');
-          savedInfoDiv.innerHTML = `<button class="view-btn" onclick="mostrarEvidencia('${item.pergunta_id}', '${item.resposta ? 'Conforme' : 'Não Conforme'}', \`${item.evidencia}\`)">Ver Evidência</button>`;
+          savedInfoDiv.innerHTML = `<button class="view-btn" onclick="mostrarEvidencia('${item.pergunta_id}', '${item.resposta ? 'Conforme' : 'Não Conforme'}', \`${item.evidencia}\`, '${item.imagem}')">Ver Evidência</button>`;
         }
       });
     }
 
-    // Exibe o modal com a evidência
-    function mostrarEvidencia(perguntaId, respostaTexto, evidencia) {
+    // Função para fazer o upload da imagem e retornar a URL
+    async function uploadImage(file) {
+      const formData = new FormData();
+      formData.append('image', file);
+      const response = await fetch('http://localhost:4000/upload-image', {
+        method: 'POST',
+        body: formData
+      });
+      const data = await response.json();
+      return data.imageUrl;
+    }
+
+    // Função para exibir a evidência em um modal, incluindo a imagem, se disponível
+    function mostrarEvidencia(perguntaId, respostaTexto, evidencia, imagem) {
       const modal = document.getElementById("evidenceModal");
       const modalContent = document.getElementById("modalContent");
       modalContent.innerHTML = `
         <p><strong>Pergunta ${perguntaId}</strong></p>
         <p><strong>Resposta:</strong> ${respostaTexto}</p>
         <p><strong>Evidência:</strong> ${evidencia}</p>
+        ${imagem ? `<img src="${imagem}" alt="Evidência" style="max-width: 100%;">` : ''}
       `;
       modal.style.display = "flex";
     }
@@ -507,12 +334,11 @@
       document.getElementById("evidenceModal").style.display = "none";
     }
 
-    // Busca as respostas salvas ao carregar a página
-    window.onload = function () {
+    // Inicializa a página: carrega perguntas e respostas
+    window.onload = function() {
+      carregarPerguntas();
       buscarRespostas();
     }
   </script>
-
 </body>
-
 </html>
