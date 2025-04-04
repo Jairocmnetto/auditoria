@@ -52,12 +52,6 @@
       display: none;
       margin-top: 1rem;
     }
-    .saved-info {
-      margin-top: 1rem;
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-   }
     .save-button {
       background: #28a745;
       color: white;
@@ -119,10 +113,10 @@
   </header>
   <main>
     <div id="questions-container"></div>
-    <div style="margin-top: 2rem;">
-      <button class="save-button" onclick="salvarRespostas()">Salvar Auditoria</button>
-    </div>
   </main>
+
+  <!-- Botão fixo para salvar auditoria -->
+  <button class="save-button" onclick="salvarRespostas()">Salvar Auditoria</button>
 
   <!-- Modal para exibir a evidência -->
   <div id="evidenceModal" class="modal">
@@ -138,9 +132,11 @@
       try {
         const resposta = await fetch("http://localhost:4000/perguntas");
         const perguntas = await resposta.json();
+        console.log("Perguntas recebidas:", perguntas);
 
         // Agrupa as perguntas por categoria
         const perguntasPorCategoria = perguntas.reduce((acc, pergunta) => {
+          if (!pergunta.CATEGORIA) return acc;
           const categoria = pergunta.CATEGORIA.trim();
           if (!acc[categoria]) {
             acc[categoria] = [];
@@ -201,11 +197,6 @@
             `;
             section.appendChild(divEvidencia);
 
-            // Área para exibir informações salvas (ex.: botão "Ver Evidência")
-            const divSaved = document.createElement('div');
-            divSaved.className = 'saved-info';
-            section.appendChild(divSaved);
-
             container.appendChild(section);
           });
         });
@@ -214,8 +205,9 @@
         document.querySelectorAll('.options input[type="radio"]').forEach(input => {
           input.addEventListener('change', (e) => {
             const section = e.target.closest('.question-section');
-            if (section.getAttribute('data-saved') === 'true') return;
-            section.querySelector('.evidence').style.display = 'flex';
+            if (section.getAttribute('data-saved') !== 'true') {
+              section.querySelector('.evidence').style.display = 'flex';
+            }
           });
         });
       } catch (error) {
@@ -223,12 +215,14 @@
       }
     }
 
-    // Função para salvar as respostas
+    // Função para salvar as respostas da auditoria
     async function salvarRespostas() {
       const respostas = {};
       const sections = document.querySelectorAll('.question-section');
       
+      // Para cada pergunta, verifica se houve resposta
       for (const section of sections) {
+        // Se já estiver salva, pula
         if (section.getAttribute('data-saved') === 'true') continue;
         const pergunta = section.getAttribute('data-pergunta');
         const option = section.querySelector('input[type="radio"]:checked');
@@ -263,6 +257,7 @@
           alert("Erro: " + data.error);
         } else {
           alert("Respostas salvas com sucesso!");
+          // Atualiza o formulário com as respostas salvas para bloquear edição
           buscarRespostas();
         }
       })
@@ -272,7 +267,7 @@
       });
     }
 
-    // Função para buscar respostas salvas e atualizar o formulário
+    // Função para buscar as auditorias salvas e atualizar o formulário (bloqueando os itens já auditados)
     function buscarRespostas() {
       fetch("http://localhost:4000/auditoria")
       .then(resp => resp.json())
@@ -284,25 +279,34 @@
       });
     }
 
-    // Atualiza o formulário com as respostas salvas, incluindo o botão para ver evidência com imagem
+    // Atualiza o formulário com as respostas salvas: bloqueia a edição e exibe o botão "Ver Evidência"
     function atualizarFormulario(respostas) {
       respostas.forEach(item => {
         const qId = "q" + item.pergunta_id;
         const section = document.getElementById(qId);
         if (section) {
-          const radios = section.querySelectorAll('input[type="radio"]');
-          radios.forEach(radio => {
+          // Desabilita os radios
+          section.querySelectorAll('input[type="radio"]').forEach(radio => {
             if (radio.value === (item.resposta ? "Conforme" : "Não Conforme")) {
               radio.checked = true;
             }
             radio.disabled = true;
           });
+          // Preenche a evidência e desabilita o campo
           const evidenceField = section.querySelector('.evidence textarea');
           evidenceField.value = item.evidencia;
           evidenceField.disabled = true;
+          // Oculta a área de evidência
           section.querySelector('.evidence').style.display = 'none';
+          // Marca a seção como já salva
           section.setAttribute('data-saved', 'true');
-          const savedInfoDiv = section.querySelector('.saved-info');
+          // Adiciona o botão "Ver Evidência" (se ainda não existir)
+          let savedInfoDiv = section.querySelector('.saved-info');
+          if (!savedInfoDiv) {
+            savedInfoDiv = document.createElement('div');
+            savedInfoDiv.className = 'saved-info';
+            section.appendChild(savedInfoDiv);
+          }
           savedInfoDiv.innerHTML = `<button class="view-btn" onclick="mostrarEvidencia('${item.pergunta_id}', '${item.resposta ? 'Conforme' : 'Não Conforme'}', \`${item.evidencia}\`, '${item.imagem}')">Ver Evidência</button>`;
         }
       });
@@ -320,7 +324,7 @@
       return data.imageUrl;
     }
 
-    // Função para exibir a evidência em um modal, incluindo a imagem, se disponível
+    // Função para exibir a evidência (com imagem, se disponível) em um modal
     function mostrarEvidencia(perguntaId, respostaTexto, evidencia, imagem) {
       const modal = document.getElementById("evidenceModal");
       const modalContent = document.getElementById("modalContent");
@@ -338,7 +342,7 @@
       document.getElementById("evidenceModal").style.display = "none";
     }
 
-    // Inicializa a página: carrega perguntas e respostas
+    // Inicializa a página: carrega as perguntas e busca as respostas salvas
     window.onload = function() {
       carregarPerguntas();
       buscarRespostas();
